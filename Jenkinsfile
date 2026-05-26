@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     environment {
+        GITHUB_REPO_URL      = 'https://github.com/AkshitPrashar14/URL_Shortener_aws.git'
+        GITHUB_BRANCH        = 'master'
         COMPOSE_PROJECT_NAME = 'pep_project'
         BACKEND_IMAGE        = 'pep_project-backend'
         FRONTEND_IMAGE       = 'pep_project-frontend'
@@ -24,8 +26,9 @@ pipeline {
         stage('Checkout') {
         // ──────────────────────────────────────────────
             steps {
-                echo '📥 Checking out source code...'
-                checkout scm
+                echo "📥 Cloning from ${GITHUB_REPO_URL} (branch: ${GITHUB_BRANCH})..."
+                git url: "${GITHUB_REPO_URL}",
+                    branch: "${GITHUB_BRANCH}"
             }
         }
 
