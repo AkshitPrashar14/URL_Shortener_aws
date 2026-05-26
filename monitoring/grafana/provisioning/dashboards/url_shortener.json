@@ -1,0 +1,29 @@
+{
+  "title": "URL Shortener Metrics",
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Total URLs Shortened",
+      "targets": [
+        {
+          "expr": "url_shorten_total",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Total Redirects",
+      "targets": [
+        {
+          "expr": "url_redirect_total",
+          "refId": "A"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+    }
+  ],
+  "schemaVersion": 30
+}
