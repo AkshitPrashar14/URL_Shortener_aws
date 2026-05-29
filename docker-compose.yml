@@ -24,7 +24,7 @@ services:
       - DB_NAME=urlshortener
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - BASE_URL=http://localhost
+      - BASE_URL=http://3.85.137.81
     depends_on:
       - mysql
       - redis
