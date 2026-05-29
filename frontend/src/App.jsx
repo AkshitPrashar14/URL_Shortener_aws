@@ -28,7 +28,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/shorten', {
+      const response = await fetch('/api/shorten', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ originalUrl: urlToShorten }),
@@ -51,7 +51,7 @@ function App() {
   const loadStats = async () => {
     if (!statsId) return;
     try {
-      const response = await fetch(`http://localhost:5000/api/stats/${statsId}`);
+      const response = await fetch(`/api/stats/${statsId}`);
       const data = await response.json();
       if (response.ok) {
         setStats(data);
