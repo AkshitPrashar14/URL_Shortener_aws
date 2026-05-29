@@ -61,6 +61,26 @@ function App() {
     }
   };
 
+  const handleCopy = () => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(shortUrl);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = shortUrl;
+      textArea.style.position = "absolute";
+      textArea.style.left = "-999999px";
+      document.body.prepend(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+      } catch (error) {
+        console.error("Fallback copy failed", error);
+      } finally {
+        textArea.remove();
+      }
+    }
+  };
+
   return (
     <div className="container">
       <header className="header">
@@ -91,7 +111,7 @@ function App() {
               <a href={shortUrl} target="_blank" rel="noopener noreferrer">
                 {shortUrl}
               </a>
-              <button onClick={() => navigator.clipboard.writeText(shortUrl)}>
+              <button onClick={handleCopy}>
                 Copy
               </button>
             </div>
