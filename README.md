@@ -89,7 +89,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 ---
 
-## 4. Database Backup to S3
+## 4. Database & Project Backup to S3
 
 We have provided a script `backup-to-s3.sh`. To configure automated backups:
 
@@ -99,9 +99,9 @@ We have provided a script `backup-to-s3.sh`. To configure automated backups:
 4. Edit the script to replace `your-s3-bucket-name` with your actual S3 bucket.
 5. Open the crontab editor: `crontab -e`.
 6. Add the following line to run the backup daily at 2 AM:
-   \`\`\`bash
+   ```bash
    0 2 * * * /home/ubuntu/pep_project/backup-to-s3.sh >> /home/ubuntu/backup.log 2>&1
-   \`\`\`
+   ```
 
 ---
 

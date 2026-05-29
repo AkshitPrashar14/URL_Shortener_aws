@@ -129,14 +129,14 @@ pipeline {
         }
 
         // ──────────────────────────────────────────────
-        stage('DB Backup to S3') {
+        stage('Backup DB & Files to S3') {
         // ──────────────────────────────────────────────
             when {
                 // Only run on main branch and when AWS credentials exist
                 branch 'main'
             }
             steps {
-                echo '💾 Backing up MySQL database to S3...'
+                echo '💾 Backing up MySQL database and Project files to S3...'
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
                                   credentialsId: 'aws-credentials']]) {
                     sh 'chmod +x ./backup-to-s3.sh && ./backup-to-s3.sh'
